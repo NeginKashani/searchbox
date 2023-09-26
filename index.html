@@ -1,0 +1,119 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(70, 230, 252, 1) 100%);
+            box-shadow: 3px 3px 10px rgb(11, 217, 131),
+                -3px -3px 10px rgb(92, 228, 171);
+            border-radius: 10px;
+            width: 50%;
+            padding: 30px;
+            border: 2px solid white;
+
+        }
+
+        .box>* {
+            width: 100%;
+        }
+
+        .box input {
+            height: 40px;
+            border-radius: 15px;
+            background-color: aliceblue;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .box li {
+            list-style-type: none;
+            height: 30px;
+            /* border: 1px solid black; */
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            color: rgb(54, 12, 6);
+            text-shadow: 3px 3px 10px rgb(11, 217, 131),
+                -3px -3px 10px rgb(92, 228, 171);
+            ;
+            font-size: 20px;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- faghat harfe aval search shavad -->
+    <div class="box">
+        <input id="inp" type="text" placeholder="search...">
+        <ul>
+            <li>sara</li>
+            <li>negin</li>
+            <li>nikki</li>
+            <li>keyvan</li>
+            <li>kamran</li>
+            <li>kambiz</li>
+            <li>alireza</li>
+            <li>nina</li>
+            <li>soheil</li>
+            <li>arsam</li>
+            <li>yasi</li>
+            <li>yasinaz</li>
+            <li>tanin</li>
+            <li>mona</li>
+            <li>elmira</li>
+            <li>popak</li>
+            <li>pouneh</li>
+            <li>pouria</li>
+        </ul>
+    </div>
+    <script>
+        // val onie ke user vared mikone
+        let _inp = document.querySelector('.box > input');
+        let _li = document.querySelectorAll('li')
+        document.getElementById('inp').addEventListener('input', (e) => {
+            let val = e.target.value
+            if (val == null || val == '') {
+                _li.forEach((item) => {
+                    item.style.display = 'none'
+                })
+            } else {
+                _li.forEach((item) => {
+                    let txt = item.innerText
+                    if (
+                        (txt.substring(0, val.length)) == val
+                    ) {
+                        item.style.display = 'flex'
+                        item.innerHTML = (txt.substring(0, val.length)) + "<b>" + (txt.substring(val.length, txt.length)) + '</b>'
+
+                    } else {
+                        item.style.display = 'none'
+                    }
+
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
